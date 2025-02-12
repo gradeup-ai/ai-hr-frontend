@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Добавляем useNavigate
 
 function PopupRegistration() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,8 @@ function PopupRegistration() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [interviewLink, setInterviewLink] = useState(""); // Добавляем состояние для ссылки
+  const navigate = useNavigate(); // Навигация
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,8 +39,10 @@ function PopupRegistration() {
       const data = await response.json();
       console.log("Успешная регистрация:", data);
 
-      // Закрываем попап после успешной регистрации
-      setIsOpen(false);
+      setInterviewLink(data.interview_link); // Сохраняем ссылку
+
+      // Автоматический переход на страницу интервью
+      navigate(`/interview/${data.id}`);
     } catch (error) {
       console.error("Ошибка:", error);
       setError("Не удалось зарегистрироваться. Попробуйте еще раз.");
@@ -85,6 +90,14 @@ function PopupRegistration() {
             </button>
             {error && <p style={{ color: "red" }}>{error}</p>}
           </form>
+          {interviewLink && (
+            <p>
+              <strong>Ссылка на интервью: </strong>
+              <a href={interviewLink} target="_blank" rel="noopener noreferrer">
+                {interviewLink}
+              </a>
+            </p>
+          )}
         </div>
       )}
     </div>
