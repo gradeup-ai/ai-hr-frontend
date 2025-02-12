@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf node_modules/.cache"  // добавлен скрипт для очистки кэша
+    "clean": "rimraf node_modules/.cache"
   },
   "eslintConfig": {
     "extends": [
@@ -43,3 +43,4 @@
     ]
   }
 }
+
