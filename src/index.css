@@ -1,0 +1,55 @@
+/* Общие стили */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #FAFAFA;
+  color: #141414;
+  margin: 0;
+  padding: 0;
+}
+
+/* Кнопка */
+button {
+  background-color: #2D2D2D;
+  color: #FFFFFF;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #1f1f1f;
+}
+
+/* Попап */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.popup input,
+.popup select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.popup button {
+  width: 100%;
+  margin-top: 10px;
+}
