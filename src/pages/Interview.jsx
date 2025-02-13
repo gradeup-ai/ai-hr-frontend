@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { LiveKitRoom, VideoConference, LocalVideo } from "@livekit/components-react"; // Убираем BarVisualizer
-import emilyPhoto from "../assets/emily-photo.png"; // Импортируем изображение из src/assets
+import { LiveKitRoom, VideoConference, VideoTile } from "@livekit/components-react"; // Заменили LocalVideo на VideoTile
+import emilyPhoto from "../assets/emily-photo.png"; // Импортируем изображение Эмили
 
 const Interview = () => {
   const { id } = useParams(); // Получаем ID интервью из URL
@@ -59,7 +59,7 @@ const Interview = () => {
             backgroundColor: "#000",
           }}
         >
-          <LocalVideo
+          <VideoTile
             style={{
               width: "100%",
               height: "100%",
