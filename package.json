@@ -23,8 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf node_modules/.cache",
-    "postinstall": "npm install"
+    "clean": "rimraf node_modules/.cache"
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +44,3 @@
     ]
   }
 }
-
-
