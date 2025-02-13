@@ -11,18 +11,19 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.17.0",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^5.0.1",  // Убедись, что эта зависимость есть
     "web-vitals": "^3.0.0"
   },
   "devDependencies": {
+    "rimraf": "^5.0.0",  // добавлена зависимость для очистки кэша
     "@babel/plugin-proposal-private-property-in-object": "^7.18.6"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts start",  // команда для старта
+    "build": "react-scripts build",  // команда для сборки
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf node_modules/.cache"
+    "clean": "rimraf node_modules/.cache"  // команда для очистки кэша
   },
   "eslintConfig": {
     "extends": [
