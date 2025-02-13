@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { LiveKitRoom, VideoConference, VideoTile } from "@livekit/components-react"; // Заменили LocalVideo на VideoTile
+import { LiveKitRoom, ParticipantTile } from "@livekit/components-react"; // Используем ParticipantTile
 import emilyPhoto from "../assets/emily-photo.png"; // Импортируем изображение Эмили
 
 const Interview = () => {
   const { id } = useParams(); // Получаем ID интервью из URL
   const [token, setToken] = useState(null);
   const [roomUrl, setRoomUrl] = useState(null);
+  const [trackRef, setTrackRef] = useState(null); // trackRef для видео потока
 
   useEffect(() => {
     // Запрашиваем токен для подключения к LiveKit
@@ -23,6 +24,12 @@ const Interview = () => {
 
     fetchToken();
   }, [id]);
+
+  useEffect(() => {
+    if (trackRef) {
+      console.log("Track is available");
+    }
+  }, [trackRef]);
 
   if (!token || !roomUrl) {
     return <p>Загрузка видеозвонка...</p>;
@@ -59,30 +66,13 @@ const Interview = () => {
             backgroundColor: "#000",
           }}
         >
-          <VideoTile
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
+          {/* Используем ParticipantTile для отображения видео кандидата */}
+          <ParticipantTile trackRef={trackRef} />
         </div>
 
-        {/* Видео конференция для всех участников */}
-        <VideoConference
-          style={{
-            width: "100%",
-            height: "100%",
-            position: "absolute",
-            top: "0",
-            left: "0",
-            visibility: "hidden", // Скрыто, так как AI HR не имеет видео
-          }}
-        />
       </LiveKitRoom>
     </div>
   );
 };
 
 export default Interview;
-
