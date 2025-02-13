@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { LiveKitRoom, VideoConference, LocalVideo } from "@livekit/components-react"; // Убираем BarVisualizer
+import emilyPhoto from "../assets/emily-photo.png"; // Импортируем изображение из src/assets
 
 const Interview = () => {
   const { id } = useParams(); // Получаем ID интервью из URL
@@ -32,7 +33,7 @@ const Interview = () => {
       <LiveKitRoom url={roomUrl} token={token} connect>
         {/* Фото Эмили вместо голосовой волны */}
         <img
-          src="/emily-photo.png"  // Путь к фото Эмили в папке public
+          src={emilyPhoto}  // Используем импортированное изображение
           alt="AI HR - Эмили"
           style={{
             width: "100%",
@@ -84,3 +85,4 @@ const Interview = () => {
 };
 
 export default Interview;
+
