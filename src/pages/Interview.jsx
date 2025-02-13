@@ -14,10 +14,10 @@ const Interview = () => {
     const fetchToken = async () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/livekit/token/${id}`, {
-        method: "GET",
-        mode: "cors",
-        credentials: "include" 
-    });
+    method: "GET",
+    mode: "cors",
+    credentials: "include" 
+});
         const data = await response.json();
         setToken(data.token);
         setRoomUrl(data.url);
