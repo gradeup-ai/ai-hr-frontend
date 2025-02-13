@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { LiveKitRoom, VideoConference, LocalVideo, BarVisualizer } from "@livekit/components-react"; // Используем BarVisualizer
+import { LiveKitRoom, VideoConference, LocalVideo } from "@livekit/components-react"; // Убираем BarVisualizer
 
 const Interview = () => {
   const { id } = useParams(); // Получаем ID интервью из URL
   const [token, setToken] = useState(null);
   const [roomUrl, setRoomUrl] = useState(null);
-  const [voiceAssistantState, setVoiceAssistantState] = useState("active"); // Состояние для VoiceAssistant
 
   useEffect(() => {
     // Запрашиваем токен для подключения к LiveKit
@@ -31,16 +30,18 @@ const Interview = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
       <LiveKitRoom url={roomUrl} token={token} connect>
-        {/* Используем BarVisualizer для визуализации звука */}
-        <BarVisualizer
-          state={voiceAssistantState}  // Передаем состояние
+        {/* Фото Эмили вместо голосовой волны */}
+        <img
+          src="/emily-photo.png"  // Путь к фото Эмили в папке public
+          alt="AI HR - Эмили"
           style={{
             width: "100%",
             height: "100%",
+            objectFit: "cover",
             position: "absolute",
             top: "0",
             left: "0",
-            backgroundColor: "rgba(0, 0, 0, 0.5)", // Полупрозрачный фон
+            backgroundColor: "rgba(0, 0, 0, 0.5)",  // Полупрозрачный фон
           }}
         />
 
