@@ -13,7 +13,7 @@ const Interview = () => {
     // Запрашиваем токен для подключения к LiveKit
     const fetchToken = async () => {
       try {
-        const response = await fetch(`https://ai-hr-project.onrender.com/livekit/token/${id}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/livekit/token/${id}`);
         const data = await response.json();
         setToken(data.token);
         setRoomUrl(data.url);
@@ -76,3 +76,4 @@ const Interview = () => {
 };
 
 export default Interview;
+
