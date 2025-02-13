@@ -26,6 +26,7 @@ const Interview = () => {
   }, [id]);
 
   useEffect(() => {
+    // Задаем trackRef, если он получен
     if (trackRef) {
       console.log("Track is available");
     }
@@ -37,7 +38,17 @@ const Interview = () => {
 
   return (
     <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
-      <LiveKitRoom url={roomUrl} token={token} connect>
+      <LiveKitRoom
+        url={roomUrl}
+        token={token}
+        connect
+        // Это нужно для получения потоков участников
+        onTrackPublished={({ track }) => {
+          if (track.kind === "video") {
+            setTrackRef(track); // Устанавливаем trackRef
+          }
+        }}
+      >
         {/* Фото Эмили вместо голосовой волны */}
         <img
           src={emilyPhoto}  // Используем импортированное изображение
@@ -76,4 +87,3 @@ const Interview = () => {
 };
 
 export default Interview;
-
